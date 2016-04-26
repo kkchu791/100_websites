@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+    <script type="text/babel">
+      class LightSwitch extends React.Component {
+          constructor() {
+          super()
+          
+          this.state = { isClicked: false }
+          this.onPress = this.onPress.bind(this)
+        }
+
+        renderActionSection(){
+          if (this.state.isClicked) {
+            return(
+              <div style={{backgroundColor:'rgba(255,255,0,0.2)', height:1000}}>
+                <button className="btn-warning" onClick={this.onPress}>Off</button>
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster1.png" />
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster2.png" /> 
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster1.png" />
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster2.png" />
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster1.png" />
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster2.png" />
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster3.png" />
+                <img style={{marginTop: 600, width: 200, height: 200, float: 'right'}} src="../monster2.png" />
+              </div>
+            )
+          } else {
+            return (
+              <div style={{backgroundColor:'black', height:1000}}>
+                <button className="btn-warning" onClick={this.onPress}>On</button>
+              </div>
+            )
+          }
+        }
+
+        onPress() {
+          this.setState({ isClicked: (this.state.isClicked == false ? true : false) })
+          console.log(this.state.isClicked)
+        }
+
+        render() {
+          return (
+            <div>
+              {this.renderActionSection()}
+            </div>
+            )
+        }
+      }
+      ReactDOM.render(<LightSwitch />, document.querySelector('#root'));
+    </script>
+  </body>
+</html>
